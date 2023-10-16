@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2967654507952411467}
   - component: {fileID: 8331411063020788}
   - component: {fileID: 2039048948496432574}
-  - component: {fileID: 8248563000540987103}
+  - component: {fileID: 3509698955690531895}
   - component: {fileID: 120457982923262994}
   m_Layer: 0
   m_Name: Greatsword
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692581465895657231}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.19015194, y: 0.59005845, z: -0.6220696, w: 0.4782287}
   m_LocalPosition: {x: 2.422, y: 1.45, z: 0.389}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.521, y: 73.889, z: -79.373}
 --- !u!33 &8331411063020788
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8248563000540987103
-MeshCollider:
+--- !u!65 &3509698955690531895
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,9 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43336385965967764, guid: 12191d74a8b6572428669ff5211fff36, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 1.8, z: 0.5}
+  m_Center: {x: 0.2, y: 0.6, z: 0.02}
 --- !u!114 &120457982923262994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f5993eac115bd48a1d0b8fda77becd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 9100000, guid: 29adfda5b6c4fff4eb512948faf7fab3, type: 2}
+  _grabPosition: {x: 2.7, y: 1.8, z: 6.9}
+  _grabRotation: {x: -0.19015191, y: 0.59005845, z: -0.62206954, w: 0.4782287}
+  _onGroundPosition: {x: 0, y: 0.05, z: 0}
+  _onGroundRotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+  _aoeGo: {fileID: 6158873106669348839, guid: 3ea4c9592915d084c97801500524e00d, type: 3}

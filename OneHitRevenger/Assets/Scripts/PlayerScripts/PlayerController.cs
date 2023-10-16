@@ -23,6 +23,8 @@ namespace PlayerScripts
                 input.actions.FindAction("Look").performed += Look;
 
                 input.actions.FindAction("Grab").performed += Grab;
+
+                input.actions.FindAction("Attack").performed += Attack;
             }
         }
 
@@ -39,6 +41,11 @@ namespace PlayerScripts
         private void Grab(InputAction.CallbackContext context)
         {
             _playerCombat.Grab();
+        }
+
+        private void Attack(InputAction.CallbackContext context)
+        {
+            _playerCombat.Attack();
         }
     }
 }

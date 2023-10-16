@@ -1,0 +1,17 @@
+{
+    "name": "CharacterScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5e5d088a50d637844a10b58263fc3f36",
+        "GUID:755978e7ce6eb544eaf447a13d2f1211"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,13 +1,12 @@
+using CharacterScripts;
 using System.Collections.Generic;
 using UnityEngine;
 using WeaponScripts;
 
 namespace PlayerScripts
 {
-    public class PlayerCombat : MonoBehaviour
+    public class PlayerCombat : CharacterCombat
     {
-        private Weapon _currentWeapon;
-
         private List<Weapon> _grabbableWeapon;
 
         private void Start()
@@ -19,24 +18,40 @@ namespace PlayerScripts
         {
             if (_grabbableWeapon.Count > 0)
             {
+                if (_currentWeapon != null)
+                {
+                    _currentWeapon.PutOnGround(transform.position);
+                    // _grabbableWeapon.Add(_currentWeapon);
+                }
+
                 _currentWeapon = _grabbableWeapon[0];
                 _grabbableWeapon.Remove(_currentWeapon);
-                Debug.Log(_currentWeapon.ToString());
+
+                _animator.runtimeAnimatorController = _currentWeapon.animator;
+                _currentWeapon.GetGrabbed(_whereToPutWeapon);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            IGrabbable grabbable = other.GetComponent<IGrabbable>();
-            if (grabbable != null)
-                _grabbableWeapon.Add(other.GetComponent<Weapon>());
+            Weapon weapon = other.GetComponent<Weapon>();
+            if (weapon != null && weapon != _currentWeapon)
+                _grabbableWeapon.Add(weapon);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            IGrabbable grabbable = other.GetComponent<IGrabbable>();
-            if (grabbable != null)
-                _grabbableWeapon.Remove(other.GetComponent<Weapon>());
+            Weapon weapon = other.GetComponent<Weapon>();
+            if (weapon != null)
+                _grabbableWeapon.Remove(weapon);
+        }
+
+        // Called from animation (via PlayerAnimationEvent)
+        public void DestroyWeapon()
+        {
+            Destroy(_currentWeapon.gameObject);
+            _animator.runtimeAnimatorController = _defaultController;
+            _currentWeapon = null;
         }
     }
 }
