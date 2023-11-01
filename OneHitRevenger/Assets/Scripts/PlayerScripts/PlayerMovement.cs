@@ -10,6 +10,10 @@ namespace PlayerScripts
         private Vector3 _moveDir;
         private Vector3 _lookDir;
 
+        // Stop & Restart Movement (for other action)
+        private bool _stopped;
+
+
         [SerializeField] private float _moveSpeed;
 
         private void Awake()
@@ -19,12 +23,21 @@ namespace PlayerScripts
 
             _moveDir = Vector3.zero;
             _lookDir = Vector3.zero;
+
+            _stopped = false;
         }
 
         public void Move(Vector2 newMoveDir)
         {
+
             _moveDir.x = newMoveDir.x;
             _moveDir.z = newMoveDir.y;
+        }
+
+        public void Stop(bool stopped)
+        {
+            // Movement stopped => Other actions are performed
+            _stopped = stopped;
         }
 
         public void Look(Vector2 newLook)
@@ -35,6 +48,19 @@ namespace PlayerScripts
 
         private void Update()
         {
+            if (_stopped)
+            {
+                Time.timeScale = 1f;
+                return;
+            }
+            else
+            {
+                if (_moveDir == Vector3.zero)
+                    Time.timeScale = 0f;
+                else
+                    Time.timeScale = 1f;
+            }
+
             _controller.Move(_moveDir * _moveSpeed * Time.deltaTime);
 
             transform.LookAt(_lookDir);

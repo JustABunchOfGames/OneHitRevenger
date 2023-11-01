@@ -7,6 +7,7 @@ namespace EnemyScripts
     public class EnemyCombat : CharacterCombat
     {
         [SerializeField] private Weapon _weaponPrefab;
+        [SerializeField] private float _attackRange;
 
         private void Awake()
         {
@@ -17,6 +18,11 @@ namespace EnemyScripts
                 _animator.runtimeAnimatorController = _currentWeapon.animator;
                 _currentWeapon.GetGrabbed(_whereToPutWeapon);
             }
+        }
+
+        public float GetRange()
+        {
+            return _attackRange;
         }
     }
 }

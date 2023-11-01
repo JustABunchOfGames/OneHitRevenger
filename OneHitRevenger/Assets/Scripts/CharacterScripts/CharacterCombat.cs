@@ -16,10 +16,14 @@ namespace CharacterScripts
 
         [SerializeField] protected int _hp;
 
-        public void Attack()
+        public bool Attack()
         {
             if (_animator.runtimeAnimatorController != _defaultController)
+            {
                 _animator.SetTrigger("Attack");
+                return true; // Attack Successfully
+            }
+            return false; // No attack done
         }
 
         // Called from animation (via AnimationEvent (Player/Enemy))
@@ -29,12 +33,15 @@ namespace CharacterScripts
                 _currentWeapon.CreateAoe(transform.rotation);
         }
 
+        // IDamageable
         public void TakeDamage()
         {
             _hp -= 1;
             if (_hp <= 0)
             {
-                _currentWeapon.PutOnGround(transform.position);
+                if (_currentWeapon != null)
+                    _currentWeapon.PutOnGround(transform.position);
+
                 Destroy(gameObject);
             }
         }

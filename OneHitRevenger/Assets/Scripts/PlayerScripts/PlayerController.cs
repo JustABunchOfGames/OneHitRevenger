@@ -8,10 +8,14 @@ namespace PlayerScripts
         private PlayerMovement _playerMovement;
         private PlayerCombat _playerCombat;
 
+        private bool _canMove;
+
         private void Awake()
         {
             _playerMovement = GetComponent<PlayerMovement>();
             _playerCombat = GetComponent<PlayerCombat>();
+
+            CanMove(true);
 
             PlayerInput input = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerInput>();
 
@@ -40,12 +44,22 @@ namespace PlayerScripts
 
         private void Grab(InputAction.CallbackContext context)
         {
+            // Use it again when we have a grab animation
+            // CanMove(false);
             _playerCombat.Grab();
         }
 
         private void Attack(InputAction.CallbackContext context)
         {
-            _playerCombat.Attack();
+            // Attack return a bool to see if we actually attacked to not block the player in case of multiple click
+            CanMove(!_playerCombat.Attack());
+        }
+
+        public void CanMove(bool canMove)
+        {
+            _canMove = canMove;
+
+            _playerMovement.Stop(!_canMove);
         }
     }
 }

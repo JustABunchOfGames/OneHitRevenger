@@ -4,21 +4,23 @@ namespace EnemyScripts
 {
     public class EnemyAnimationEvent : MonoBehaviour
     {
-        private EnemyCombat _playerCombat;
+        private EnemyCombat _combat;
+        private EnemyController _controller;
 
         private void Awake()
         {
-            _playerCombat = GetComponentInParent<EnemyCombat>();
+            _combat = GetComponentInParent<EnemyCombat>();
+            _controller = GetComponentInParent<EnemyController>();
         }
 
         public void Attack()
         {
-            _playerCombat.CreateAoe();
+            _combat.CreateAoe();
         }
 
         public void EndAttack()
         {
-            
+            _controller.EndAttack();
         }
     }
 }
