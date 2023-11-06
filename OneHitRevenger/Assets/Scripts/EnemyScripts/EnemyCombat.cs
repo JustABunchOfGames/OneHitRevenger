@@ -1,6 +1,7 @@
 using CharacterScripts;
 using UnityEngine;
 using WeaponScripts;
+using static CharacterScripts.CharacterCombat;
 
 namespace EnemyScripts
 {
@@ -9,13 +10,13 @@ namespace EnemyScripts
         [SerializeField] private Weapon _weaponPrefab;
         [SerializeField] private float _attackRange;
 
-        private void Awake()
+        private void Start()
         {
             if ( _weaponPrefab != null )
             {
                 _currentWeapon = Instantiate(_weaponPrefab);
 
-                _animator.runtimeAnimatorController = _currentWeapon.animator;
+                changeAnimatorEvent.Invoke(_currentWeapon.animator);
                 _currentWeapon.GetGrabbed(_whereToPutWeapon);
             }
         }

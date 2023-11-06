@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11f93e2e9aaae243aa8e2cd43674c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultController: {fileID: 9100000, guid: ce825c8a13c55f248962fb53ed73f9f5, type: 2}
 --- !u!1 &2280646527826655815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,6 +2454,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whereToPutWeapon: {fileID: 2280646527826411521}
-  _animator: {fileID: 2280646527834010405}
-  _defaultController: {fileID: 9100000, guid: ce825c8a13c55f248962fb53ed73f9f5, type: 2}
   _hp: 1

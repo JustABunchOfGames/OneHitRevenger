@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5934542487571376167
 Transform:
   m_ObjectHideFlags: 0
@@ -248,8 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _whereToPutWeapon: {fileID: 2451019955809935962}
-  _animator: {fileID: 5636238545990438450}
-  _defaultController: {fileID: 9100000, guid: ce825c8a13c55f248962fb53ed73f9f5, type: 2}
   _hp: 1
   _weaponPrefab: {fileID: 120457982923262994, guid: c20c8ec017d0c9b44b4fbfaf76102ed6,
     type: 3}
@@ -1525,6 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed175499f41b4b148afc4e54eedc120c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultController: {fileID: 9100000, guid: ce825c8a13c55f248962fb53ed73f9f5, type: 2}
 --- !u!1 &6545241851518450535
 GameObject:
   m_ObjectHideFlags: 0

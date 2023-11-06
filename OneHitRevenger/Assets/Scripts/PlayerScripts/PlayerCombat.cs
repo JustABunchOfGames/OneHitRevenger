@@ -27,7 +27,7 @@ namespace PlayerScripts
                 _currentWeapon = _grabbableWeapon[0];
                 _grabbableWeapon.Remove(_currentWeapon);
 
-                _animator.runtimeAnimatorController = _currentWeapon.animator;
+                changeAnimatorEvent.Invoke(_currentWeapon.animator);
                 _currentWeapon.GetGrabbed(_whereToPutWeapon);
             }
         }
@@ -46,11 +46,16 @@ namespace PlayerScripts
                 _grabbableWeapon.Remove(weapon);
         }
 
-        // Called from animation (via PlayerAnimationEvent)
-        public void DestroyWeapon()
+        // Called from animation (via PlayerAnimation)
+        public override void EndAttack()
+        {
+            DestroyWeapon();
+        }
+
+        private void DestroyWeapon()
         {
             Destroy(_currentWeapon.gameObject);
-            _animator.runtimeAnimatorController = _defaultController;
+            changeAnimatorEvent.Invoke(null);
             _currentWeapon = null;
         }
     }

@@ -1,8 +1,9 @@
+using CharacterScripts;
 using UnityEngine;
 
 namespace EnemyScripts
 {
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyMovement : CharacterMovement
     {
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _speed;
@@ -27,6 +28,8 @@ namespace EnemyScripts
             _rigidbody.MovePosition(currentPosition + (direction * _speed * Time.deltaTime));
 
             transform.LookAt(targetPosition);
+
+            moveEvent.Invoke(true);
 
             return distance;
         }

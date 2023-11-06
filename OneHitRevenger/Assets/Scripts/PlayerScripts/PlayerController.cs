@@ -51,8 +51,7 @@ namespace PlayerScripts
 
         private void Attack(InputAction.CallbackContext context)
         {
-            // Attack return a bool to see if we actually attacked to not block the player in case of multiple click
-            CanMove(!_playerCombat.Attack());
+            _playerCombat.Attack();
         }
 
         public void CanMove(bool canMove)
