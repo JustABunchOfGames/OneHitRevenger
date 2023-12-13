@@ -1,0 +1,20 @@
+{
+    "name": "LevelScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ada42ae4ff79e03448a6dea021d2e71c",
+        "GUID:149aa8b62f760b64daea030d42b645ce",
+        "GUID:5e5d088a50d637844a10b58263fc3f36",
+        "GUID:13de53a4c1b281e48837ed9d638813c7",
+        "GUID:5d41e8125d2968f4084fd84d29bcbd22"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

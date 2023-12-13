@@ -15,8 +15,16 @@ namespace EnemyScripts
             _rigidbody = GetComponent<Rigidbody>();
         }
 
+        public void SetTarget(Transform target)
+        {
+            _playerTransform = target;
+        }
+
         public float Move()
         {
+            if (_playerTransform == null)
+                return 100f;
+
             Vector3 targetPosition = _playerTransform.position;
             Vector3 currentPosition = transform.position;
 

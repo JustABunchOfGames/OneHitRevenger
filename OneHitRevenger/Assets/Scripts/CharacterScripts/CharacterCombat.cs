@@ -27,7 +27,7 @@ namespace CharacterScripts
         public void CreateAoe()
         {
             if (_currentWeapon != null)
-                _currentWeapon.CreateAoe(transform.rotation);
+                _currentWeapon.CreateAoe(transform, gameObject.tag);
         }
 
         // IDamageable
