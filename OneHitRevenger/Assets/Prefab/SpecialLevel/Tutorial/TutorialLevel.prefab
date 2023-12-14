@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e424706db2c68b14591140e4441649b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSpecialWinCondition: 1
   _triggerList:
-  - list:
+  - tutorialText: ZQSD to move
+    list:
     - position: {x: 6, y: 0.2, z: -4}
       trigger: {fileID: 3481923985035975573, guid: decffeff4f64deb47922c00c3ca45b19,
         type: 3}
@@ -55,14 +57,18 @@ MonoBehaviour:
     - position: {x: 8, y: 0.2, z: 1}
       trigger: {fileID: 3481923985035975573, guid: decffeff4f64deb47922c00c3ca45b19,
         type: 3}
-  - list:
+  - tutorialText: 'E to Grab.
+
+      Aim then left click to attack'
+    list:
     - position: {x: -5, y: 0, z: -2}
       trigger: {fileID: -5468850063487320796, guid: 73cab43d43a40c0459298e2e50209649,
         type: 3}
     - position: {x: -2, y: 0.05, z: -6}
       trigger: {fileID: 5393548223052531101, guid: 6d70b155e7bbab341ab01bcf5a0c5f0b,
         type: 3}
-  - list:
+  - tutorialText: Go into the final zone to finish
+    list:
     - position: {x: 1, y: 0.2, z: 1}
       trigger: {fileID: 3481923985035975573, guid: decffeff4f64deb47922c00c3ca45b19,
         type: 3}

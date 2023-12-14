@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8f4b1615baebb4eb8b036db3bbbd5e, type: 3}
   m_Name: LevelSpawners
   m_EditorClassIdentifier: 
-  levelSpawners: []
+  levelSpawners:
+  - world: 0
+    level: 1
+    playerSpawner: {fileID: 11400000, guid: 4fadb1823445d0843875940e502f7c4d, type: 2}
+    weaponSpawner: {fileID: 11400000, guid: 1e03df5d07b4ab84cade2776684274e9, type: 2}
+    enemySpawner: {fileID: 11400000, guid: 9a955edf2e8844e4eaaa7bf6f747ad29, type: 2}
+    terrainSpawner: {fileID: 11400000, guid: c00e09f58d6bc4c429603851a8951707, type: 2}
+    specialLevelSpawner: {fileID: 11400000, guid: d4ea99022c6c0314b9a5ad5dce75c7f7,
+      type: 2}
+  - world: 1
+    level: 1
+    playerSpawner: {fileID: 11400000, guid: 4d51f70d01e622d4ba54fb3aaf3a4c77, type: 2}
+    weaponSpawner: {fileID: 11400000, guid: ecf30d3fbf7d7f9488a63b83c4889947, type: 2}
+    enemySpawner: {fileID: 11400000, guid: aae08e69e712b414e92315062fa6b639, type: 2}
+    terrainSpawner: {fileID: 11400000, guid: a2857d028fe1cba4e8523a386a8fdb71, type: 2}
+    specialLevelSpawner: {fileID: 11400000, guid: 1e863086b95bf004b8838806eb8f4a22,
+      type: 2}

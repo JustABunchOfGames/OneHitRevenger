@@ -1,0 +1,16 @@
+{
+    "name": "UIScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5d41e8125d2968f4084fd84d29bcbd22"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
