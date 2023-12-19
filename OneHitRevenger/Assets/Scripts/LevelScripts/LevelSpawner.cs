@@ -1,3 +1,7 @@
+using System;
+using UnityEngine;
+using System.Collections.Generic;
+
 namespace LevelScripts
 {
     [System.Serializable]
@@ -5,26 +9,40 @@ namespace LevelScripts
     {
         public int world;
         public int level;
-        public PlayerSpawnScriptable playerSpawner;
-        public WeaponSpawnScriptable weaponSpawner;
-        public EnemySpawnScriptable enemySpawner;
-        public TerrainSpawnScriptable terrainSpawner;
-        public SpecialLevelSpawnScriptable specialLevelSpawner;
 
-        public LevelSpawner(int world, int level, 
-            PlayerSpawnScriptable playerSpawner, 
-            WeaponSpawnScriptable weaponSpawner, 
-            EnemySpawnScriptable enemySpawner,
-            TerrainSpawnScriptable terrainSpawner,
-            SpecialLevelSpawnScriptable specialLevelSpawner)
+        private Dictionary<Type, ScriptableSpawner> _spawnerDictionary;
+
+        public LevelSpawner()
         {
-            this.world = world;
-            this.level = level;
-            this.playerSpawner = playerSpawner;
-            this.weaponSpawner = weaponSpawner;
-            this.enemySpawner = enemySpawner;
-            this.terrainSpawner = terrainSpawner;
-            this.specialLevelSpawner = specialLevelSpawner;
+            _spawnerDictionary = new Dictionary<Type, ScriptableSpawner>();
+        }
+
+        public ScriptableSpawner GetSpawner(Type type)
+        {
+            Debug.Log(type);
+
+            Debug.Log(_spawnerDictionary.ContainsKey(type));
+
+            Debug.Log(_spawnerDictionary.Count);
+
+            if (_spawnerDictionary.ContainsKey(type))
+                return _spawnerDictionary[type];
+            return null;
+        }
+
+        public void AddSpawner(ScriptableSpawner spawner)
+        {
+            Type spawnerType = spawner.GetType();
+
+            Debug.Log(spawnerType);
+
+            if (_spawnerDictionary.ContainsKey(spawnerType))
+                _spawnerDictionary[spawnerType] = spawner;
+            else
+                _spawnerDictionary.Add(spawnerType, spawner);
+
+            Debug.Log(_spawnerDictionary.Count);
+            Debug.Log(_spawnerDictionary[spawnerType]);
         }
     }
 }

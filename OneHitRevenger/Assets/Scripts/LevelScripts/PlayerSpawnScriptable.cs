@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LevelScripts
 {
-    public class PlayerSpawnScriptable : ScriptableObject
+    public class PlayerSpawnScriptable : ScriptableSpawner
     {
         [SerializeField] private GameObject _playerPrefab;
         public GameObject playerPrefab { get { return _playerPrefab; } private set { } }

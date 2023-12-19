@@ -6,32 +6,34 @@ namespace LevelScripts
 {
     public class PlayerManager : MonoBehaviour
     {
-        public PlayerSpawnScriptable GetPlayerSpawn(string path)
+        // All functions are called from LevelManager Events
+
+        public void Save(LevelSpawnScriptable levelScriptable)
         {
             GameObject player = GetComponentInChildren<PlayerController>().gameObject;
 
             PlayerSpawnScriptable spawner = ScriptableObject.CreateInstance<PlayerSpawnScriptable>();
             spawner.InitSpawner(PrefabUtility.GetCorrespondingObjectFromOriginalSource(player), player.transform.position);
 
-            AssetDatabase.CreateAsset(spawner, path + "/" + "PlayerSpawner.asset");
+            AssetDatabase.CreateAsset(spawner, levelScriptable.path + "/" + "PlayerSpawner.asset");
 
-            return spawner;
+            levelScriptable.SaveLevelSpawner(spawner);
         }
 
-        public Transform SetPlayerSpawn(PlayerSpawnScriptable spawner)
+        public void Load(LevelSpawnScriptable levelScriptable)
         {
-            ClearPlayerSpawn();
+            Clear();
+
+            PlayerSpawnScriptable spawner = (PlayerSpawnScriptable)levelScriptable.GetLevelSpawner(typeof(PlayerSpawnScriptable));
 
             GameObject go = Instantiate(spawner.playerPrefab, spawner.playerPosition, Quaternion.identity, transform);
 
             // Reconnect Prefab to Save/Load more efficiently
             ConvertToPrefabInstanceSettings settings = new ConvertToPrefabInstanceSettings();
             PrefabUtility.ConvertToPrefabInstance(go, spawner.playerPrefab, settings, InteractionMode.AutomatedAction);
-
-            return go.transform;
         }
 
-        public void ClearPlayerSpawn()
+        public void Clear()
         {
             for (int i = transform.childCount; i > 0; i--)
             {

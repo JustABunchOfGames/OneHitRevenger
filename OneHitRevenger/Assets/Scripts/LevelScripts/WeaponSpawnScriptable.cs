@@ -10,10 +10,8 @@ namespace LevelScripts
         public Vector3 position;
     }
 
-    public class WeaponSpawnScriptable : ScriptableObject
+    public class WeaponSpawnScriptable : ScriptableSpawner
     {
-        
-
         [SerializeField] private List<WeaponPrefabPosition> _weaponPositionList = new List<WeaponPrefabPosition>();
 
         public List<WeaponPrefabPosition> weaponPositionList { get { return _weaponPositionList; } private set { } }

@@ -6,7 +6,9 @@ namespace LevelScripts
 {
     public class WeaponManager : MonoBehaviour
     {
-        public WeaponSpawnScriptable GetWeaponSpawn(string path)
+        // All functions are called from LevelManager Events
+
+        public void Save(LevelSpawnScriptable levelScriptable)
         {
             WeaponSpawnScriptable spawner = ScriptableObject.CreateInstance<WeaponSpawnScriptable>();
 
@@ -17,16 +19,18 @@ namespace LevelScripts
                 spawner.AddWeapon(PrefabUtility.GetCorrespondingObjectFromOriginalSource(weapon), weapon.transform.position);
             }
 
-            AssetDatabase.CreateAsset(spawner, path + "/" + "WeaponSpawner.asset");
+            AssetDatabase.CreateAsset(spawner, levelScriptable.path + "/" + "WeaponSpawner.asset");
 
-            return spawner;
+            levelScriptable.SaveLevelSpawner(spawner);
         }
 
-        public void SetWeaponSpawn(WeaponSpawnScriptable spawner)
+        public void Load(LevelSpawnScriptable levelScriptable)
         {
-            ClearWeaponSpawn();
+            Clear();
 
-            foreach(WeaponPrefabPosition weapon in spawner.weaponPositionList)
+            WeaponSpawnScriptable spawner = (WeaponSpawnScriptable)levelScriptable.GetLevelSpawner(typeof(WeaponSpawnScriptable));
+
+            foreach (WeaponPrefabPosition weapon in spawner.weaponPositionList)
             {
                 GameObject go = Instantiate(weapon.weaponPrefab, weapon.position, Quaternion.identity, transform);
 
@@ -41,7 +45,7 @@ namespace LevelScripts
             }
         }
 
-        public void ClearWeaponSpawn()
+        public void Clear()
         {
             for( int i = transform.childCount; i > 0; i-- )
             {

@@ -18,7 +18,12 @@ namespace EnemyScripts
             _attackRange = _combat.GetRange();
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
+        {
+            EnemyControl();
+        }
+
+        private void EnemyControl()
         {
             if (!_isAttacking)
             {

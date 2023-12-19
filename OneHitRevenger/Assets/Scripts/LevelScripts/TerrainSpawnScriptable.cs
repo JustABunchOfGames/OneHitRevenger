@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LevelScripts
 {
-    public class TerrainSpawnScriptable : ScriptableObject
+    public class TerrainSpawnScriptable : ScriptableSpawner
     {
         [SerializeField] private GameObject _terrainPrefab;
         public GameObject terrainPrefab { get { return _terrainPrefab; } private set { } }

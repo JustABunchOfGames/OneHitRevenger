@@ -10,7 +10,7 @@ namespace LevelScripts
         public Vector3 position;
     }
 
-    public class EnemySpawnScriptable : ScriptableObject
+    public class EnemySpawnScriptable : ScriptableSpawner
     {
         [SerializeField] private List<EnemyPrefabPosition> _enemyPositionList = new List<EnemyPrefabPosition>();
 

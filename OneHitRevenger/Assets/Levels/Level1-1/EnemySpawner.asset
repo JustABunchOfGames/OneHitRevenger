@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemySpawner
   m_EditorClassIdentifier: 
   _enemyPositionList:
-  - enemyPrefab: {fileID: 626303889148068142, guid: 8c394a54468b5cc4ca85d77743c87cc4,
-      type: 3}
-    position: {x: -5.9, y: 1, z: 0.53}
   - enemyPrefab: {fileID: 626303889148068142, guid: cedff9cebe2850147a424bf80f2ae70c,
       type: 3}
-    position: {x: 10.18, y: 1, z: 0.88}
+    position: {x: 3.75, y: 1, z: 1.99}
+  - enemyPrefab: {fileID: 626303889148068142, guid: 50c787b9014329b46851a40db106e7f9,
+      type: 3}
+    position: {x: -4.28, y: 1, z: -3.55}

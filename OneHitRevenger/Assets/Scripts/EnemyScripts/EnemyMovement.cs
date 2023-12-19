@@ -15,9 +15,9 @@ namespace EnemyScripts
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void SetTarget(Transform target)
+        private void Start()
         {
-            _playerTransform = target;
+            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         public float Move()
@@ -29,6 +29,7 @@ namespace EnemyScripts
             Vector3 currentPosition = transform.position;
 
             float distance = Vector3.Distance(currentPosition, targetPosition);
+            Debug.Log("distance :" + distance);
 
             Vector3 direction = targetPosition - currentPosition;
             direction.Normalize();
@@ -37,7 +38,7 @@ namespace EnemyScripts
 
             transform.LookAt(targetPosition);
 
-            moveEvent.Invoke(true);
+            moveEvent.Invoke(true); // Animation
 
             return distance;
         }

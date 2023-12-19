@@ -15,10 +15,7 @@ MonoBehaviour:
   _weaponPositionList:
   - weaponPrefab: {fileID: 102864609132580058, guid: 8d2f045de77159c4bb986c9cf9446e9f,
       type: 3}
-    position: {x: -2.94, y: 0.05, z: -3.8}
-  - weaponPrefab: {fileID: 4692581465895657231, guid: c20c8ec017d0c9b44b4fbfaf76102ed6,
-      type: 3}
-    position: {x: 10.82, y: 0.05, z: -0.56}
+    position: {x: -4.72, y: 0.05, z: -1.09}
   - weaponPrefab: {fileID: 4080639951637555921, guid: e1157a71f75ed924cb91307987aad6e6,
       type: 3}
-    position: {x: 7.72, y: 0.05, z: -7.32}
+    position: {x: 4.77, y: 0.05, z: -0.21}

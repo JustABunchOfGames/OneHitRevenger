@@ -5,21 +5,25 @@ namespace LevelScripts
 {
     public class SpecialLevelManager : MonoBehaviour
     {
-        public SpecialLevelSpawnScriptable GetSpecialLevelSpawn(string path)
+        // All functions are called from LevelManager Events
+
+        public void Save(LevelSpawnScriptable levelScriptable)
         {
             GameObject specialLevel = transform.GetChild(0).gameObject;
 
             SpecialLevelSpawnScriptable spawner = ScriptableObject.CreateInstance<SpecialLevelSpawnScriptable>();
             spawner.InitSpawner(PrefabUtility.GetCorrespondingObjectFromOriginalSource(specialLevel));
 
-            AssetDatabase.CreateAsset(spawner, path + "/" + "SpecialLevelSpawner.asset");
+            AssetDatabase.CreateAsset(spawner, levelScriptable.path + "/" + "SpecialLevelSpawner.asset");
 
-            return spawner;
+            levelScriptable.SaveLevelSpawner(spawner);
         }
 
-        public void SetSpecialLevelSpawn(SpecialLevelSpawnScriptable spawner)
+        public void Load(LevelSpawnScriptable levelScriptable)
         {
-            ClearSpecialLevelSpawn();
+            Clear();
+
+            SpecialLevelSpawnScriptable spawner = (SpecialLevelSpawnScriptable)levelScriptable.GetLevelSpawner(typeof(SpecialLevelSpawnScriptable));
 
             GameObject go = Instantiate(spawner.specialLevelPrefab, transform);
 
@@ -28,7 +32,7 @@ namespace LevelScripts
             PrefabUtility.ConvertToPrefabInstance(go, spawner.specialLevelPrefab, settings, InteractionMode.AutomatedAction);
         }
 
-        public void ClearSpecialLevelSpawn()
+        public void Clear()
         {
             for (int i = transform.childCount; i > 0; i--)
             {

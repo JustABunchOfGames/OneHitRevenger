@@ -5,21 +5,25 @@ namespace LevelScripts
 {
     public class TerrainManager : MonoBehaviour
     {
-        public TerrainSpawnScriptable GetTerrainSpawn(string path)
+        // All functions are called from LevelManager Events
+
+        public void Save(LevelSpawnScriptable levelScriptable)
         {
             GameObject terrain = transform.GetChild(0).gameObject;
 
             TerrainSpawnScriptable spawner = ScriptableObject.CreateInstance<TerrainSpawnScriptable>();
             spawner.InitSpawner(PrefabUtility.GetCorrespondingObjectFromOriginalSource(terrain));
 
-            AssetDatabase.CreateAsset(spawner, path + "/" + "TerrainSpawner.asset");
+            AssetDatabase.CreateAsset(spawner, levelScriptable.path + "/" + "TerrainSpawner.asset");
 
-            return spawner;
+            levelScriptable.SaveLevelSpawner(spawner);
         }
 
-        public void SetTerrainSpawn(TerrainSpawnScriptable spawner)
+        public void Load(LevelSpawnScriptable levelScriptable)
         {
-            ClearTerrainSpawn();
+            Clear();
+
+            TerrainSpawnScriptable spawner = (TerrainSpawnScriptable)levelScriptable.GetLevelSpawner(typeof(TerrainSpawnScriptable));
 
             GameObject go = Instantiate(spawner.terrainPrefab, transform);
 
@@ -28,7 +32,7 @@ namespace LevelScripts
             PrefabUtility.ConvertToPrefabInstance(go, spawner.terrainPrefab, settings, InteractionMode.AutomatedAction);
         }
 
-        public void ClearTerrainSpawn()
+        public void Clear()
         {
             for (int i = transform.childCount; i > 0; i--)
             {
