@@ -29,7 +29,6 @@ namespace EnemyScripts
             Vector3 currentPosition = transform.position;
 
             float distance = Vector3.Distance(currentPosition, targetPosition);
-            Debug.Log("distance :" + distance);
 
             Vector3 direction = targetPosition - currentPosition;
             direction.Normalize();

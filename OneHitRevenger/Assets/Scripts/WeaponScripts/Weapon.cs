@@ -20,12 +20,16 @@ namespace WeaponScripts
         [SerializeField] private Quaternion _onGroundRotation;
         [SerializeField] private GameObject _onGroundIndicator;
 
+        private Transform _onGroundParent = null; // Easier to find & clear this way
+
         [Space(5)]
         [Header("AreaOfEffect")]
         [SerializeField] private AreaOfEffect _aoePrefab;
 
         private void Start()
         {
+            _onGroundParent = GameObject.FindGameObjectWithTag("WeaponManager").transform;
+
             if (transform.parent == null && transform.rotation != _onGroundRotation)
             {
                 PutOnGround(transform.position);
@@ -43,7 +47,7 @@ namespace WeaponScripts
 
         public void PutOnGround(Vector3 position)
         {
-            transform.parent = null;
+            transform.parent = _onGroundParent;
             transform.position = new Vector3(position.x, _onGroundPosition.y, position.z);
             transform.rotation = _onGroundRotation;
             _onGroundIndicator.SetActive(true);

@@ -1,12 +1,15 @@
 using EnemyScripts;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LevelScripts
 {
     public class EnemyManager : MonoBehaviour
     {
         // All functions are called from LevelManager Events
+
+        public static EnemySpawnEvent enemySpawnEvent = new EnemySpawnEvent();
 
         public void Save(LevelSpawnScriptable levelScriptable)
         {
@@ -30,6 +33,8 @@ namespace LevelScripts
 
             EnemySpawnScriptable spawner = (EnemySpawnScriptable) levelScriptable.GetLevelSpawner(typeof(EnemySpawnScriptable));
 
+            int nbEnemySpawned = 0;
+
             foreach (EnemyPrefabPosition enemy in spawner.enemyPositionList)
             {
                 GameObject go = Instantiate(enemy.enemyPrefab, enemy.position, Quaternion.identity, transform);
@@ -37,7 +42,10 @@ namespace LevelScripts
                 // Reconnect Prefab to Save/Load more efficiently
                 ConvertToPrefabInstanceSettings settings = new ConvertToPrefabInstanceSettings();
                 PrefabUtility.ConvertToPrefabInstance(go, enemy.enemyPrefab, settings, InteractionMode.AutomatedAction);
+
+                nbEnemySpawned++;
             }
+            enemySpawnEvent.Invoke(nbEnemySpawned);
         }
 
         public void Clear()
@@ -47,5 +55,7 @@ namespace LevelScripts
                 DestroyImmediate(transform.GetChild(0).gameObject);
             }
         }
+
+        public class EnemySpawnEvent : UnityEvent<int> { }
     }
 }

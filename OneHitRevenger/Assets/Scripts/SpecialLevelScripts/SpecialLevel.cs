@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpecialLevelScripts
 {
     public abstract class SpecialLevel : MonoBehaviour
     {
-        public bool hasSpecialWinCondition;
+        [SerializeField] private bool _hasSpecialWinCondition;
+        public bool hasSpecialWinCondition { get { return _hasSpecialWinCondition; } protected set { _hasSpecialWinCondition = value; } }
     }
 }
